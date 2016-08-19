@@ -1,4 +1,4 @@
-#include "Bmp.h"
+ï»¿#include "Bmp.h"
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
@@ -6,18 +6,33 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-	char readPath[] = "snail.bmp"; // ¶ÁÈ¡Â·¾¶
-	char writePath[] = "snail_binary.bmp"; // Ğ´ÈëÂ·¾¶
+	char *readPath;
+	char defaultWritePath[] = "_deal_.bmp"; // å†™å…¥è·¯å¾„
+	char *writePath;
+	if (argc >= 2) {
+		readPath = argv[1];
+	}
+	else {
+		cout << "Please input image's path!" << endl;
+		return -1;
+	}
+
+	if (argc >= 3) {
+		writePath = argv[2];
+	}
+	else {
+		writePath = defaultWritePath;
+	}
 
 	BMP bmp;
 	bmp.readBmp(readPath);
 
-	// Êä³öÍ¼ÏñĞÅÏ¢
+	// è¾“å‡ºå›¾åƒä¿¡æ¯
 	printf("width=%d, height=%d, biBitCount=%d\n", bmp.bmpWidth, bmp.bmpHeight, bmp.biBitCount);
 
-	// »Ò¶È»¯
-	bmp.binaryScale();
-	// ½«Í¼ÏñÊı¾İ´æÅÌ
+	// ç°åº¦åŒ–
+	bmp.grayScale();
+	// å°†å›¾åƒæ•°æ®å­˜ç›˜
 	bmp.saveBmp(writePath);
 
 	system("pause");

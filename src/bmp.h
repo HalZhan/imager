@@ -48,6 +48,7 @@ bool BMP::readBmp(char *bmpName) {
 	// 二进制读方式打开指定图像文件
 	FILE *fp = fopen(bmpName, "rb");
 	if (fp == 0) {
+		cout << "Failed loading image!" << endl;
 		return 0;
 	}
 	// 跳过位图文件头结构 BITMAPFILEHEADER
@@ -78,6 +79,7 @@ bool BMP::readBmp(char *bmpName) {
 
 	// 关闭文件
 	fclose(fp);
+	cout << "Loaded image: " << bmpName << " successfully!"  << endl;
 
 	return 1;
 }
@@ -88,6 +90,10 @@ bool BMP::saveBmp(char *bmpName) {
 
 // 灰度化
 bool BMP::grayScale() {
+	if (!pBmpBuf) {
+		cout << "Failed loading image data!" << endl;
+		return 0;
+	}
 	// 循环变量，图像坐标
 	int i, j;
 	// 每行字节数
@@ -110,12 +116,13 @@ bool BMP::grayScale() {
 			}
 		}
 	}
+	cout << "Image has gray scaled successfully!" << endl;
 	return true;
 }
 
 // 二值化
 bool BMP::binaryScale() {
-	char low_val = 0, high_val = 255;
+	int low_val = 0, high_val = 255;
 	int i, j, k;
 	// 定义变量，计算图像每行像素所占字节数（必须是4的倍数）
 	int lineByte = (bmpWidth * biBitCount / 8 + 3) / 4 * 4;
@@ -160,6 +167,7 @@ bool BMP::binaryScale() {
 bool BMP::_saveBmp(char *bmpName, unsigned char *imgBuf, int width, int height, int biBitCount, RGBQUAD *pColorTable) {
 	// 如果位图数据指针为0， 则没有数据传入，函数返回
 	if (!imgBuf) {
+		cout << "Failed loading image data!" << endl;
 		return 0;
 	}
 	// 颜色表大小，以字节为单位，灰度图像颜色表为1024字节，彩色图像颜色表大小为0
@@ -208,7 +216,7 @@ bool BMP::_saveBmp(char *bmpName, unsigned char *imgBuf, int width, int height, 
 	fwrite(&head, sizeof(BITMAPINFOHEADER), 1, fp);
 
 	// 如果灰度图像，有颜色表，写入文件
-	if (biBitCount == 8) {
+	if (biBitCount == BITCOUNT_GRAY) {
 		fwrite(pColorTable, sizeof(RGBQUAD), 256, fp);
 	}
 
@@ -216,6 +224,6 @@ bool BMP::_saveBmp(char *bmpName, unsigned char *imgBuf, int width, int height, 
 	fwrite(imgBuf, height * lineByte, 1, fp);
 
 	fclose(fp);
-
+	cout << "Store image " << bmpName << " successfully!" << endl;
 	return 1;
 }
