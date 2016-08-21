@@ -22,14 +22,16 @@ namespace imager {
 	// 灰度化
 	void grayScale(const FunctionCallbackInfo<Value>& args) {
 		Isolate *isolate = args.GetIsolate();
-		if (args.Length() < 1) {
+		if (args.Length() < 1 || !args[0]->ToString()->Length()) {
 			// 没有输入文件名
 			isolate->ThrowException(Exception::TypeError(String::NewFromUtf8(isolate, "You have to input image path!")));
+			args.GetReturnValue().Set(String::NewFromUtf8(isolate, "Error!"));
+			return;
 		};
 		char *readPath = To_CharP(args[0]);
 		char defaultWritePath[] = "_deal_.bmp";
 		char *writePath;
-		if (args.Length() >= 2) {
+		if (args.Length() >= 2 && args[1]->ToString()->Length()) {
 			writePath = To_CharP(args[1]);
 		}
 		else {

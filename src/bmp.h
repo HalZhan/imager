@@ -130,12 +130,7 @@ bool BMP::binaryScale() {
 		for (i = 0; i < bmpHeight; i++) {
 			for (j = 0; j < bmpWidth; j++) {
 				char val = *(pBmpBuf + i*lineByte + j);
-				if (val <= BINARY_THRESHOLD) {
-					val = low_val;
-				}
-				else {
-					val = high_val;
-				}
+				val = val <= BINARY_THRESHOLD ? 0 : 255;
 				*(pBmpBuf + i*lineByte + j) = val;
 			}
 		}
@@ -147,12 +142,7 @@ bool BMP::binaryScale() {
 				char g = *(pBmpBuf + i*lineByte + j * 3 + 1);
 				char r = *(pBmpBuf + i*lineByte + j * 3 + 2);
 				int val = (30 * r + 59 * g + 11 * b) / 100;
-				if (val <= BINARY_THRESHOLD) {
-					val = low_val;
-				}
-				else {
-					val = high_val;
-				}
+				val = val <= BINARY_THRESHOLD ? 0 : 255;
 				for (k = 0; k < 3; k++) {
 					*(pBmpBuf + i*lineByte + j * 3 + k) = val;
 				}

@@ -31,7 +31,9 @@ int main(int argc, char **argv) {
 	printf("width=%d, height=%d, biBitCount=%d\n", bmp.bmpWidth, bmp.bmpHeight, bmp.biBitCount);
 
 	// 灰度化
-	bmp.grayScale();
+	// bmp.grayScale();
+	// 二值化
+	bmp.binaryScale();
 	// 将图像数据存盘
 	bmp.saveBmp(writePath);
 
