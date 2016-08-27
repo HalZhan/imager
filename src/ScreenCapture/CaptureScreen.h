@@ -11,9 +11,9 @@ bool CaptureScreen(char *fileName) {
 	int Width = pDC->GetDeviceCaps(HORZRES);
 	int Height = pDC->GetDeviceCaps(VERTRES);
 
-	printf("当前屏幕色彩模式为%d位色彩\n", BitPerPixel);
-	printf("屏幕宽度：%d\n", Width);
-	printf("屏幕高度：%d\n", Height);
+	printf("Current Screen Color Mode Is %d Bit Color.\n", BitPerPixel);
+	printf("Screen Width: %d\n", Width);
+	printf("Screen Height: %d\n", Height);
 
 	CDC memDC;//内存DC
 	memDC.CreateCompatibleDC(pDC);

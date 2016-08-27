@@ -1,4 +1,8 @@
 addons/*/build
 src/*/build
+<<<<<<< HEAD
 test/output/*
 .vscode
+=======
+test/output/*
+>>>>>>> ee50dd8d688fbb183605a982e476ca528fd1175b
