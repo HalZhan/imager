@@ -1,5 +1,6 @@
 #include <node.h>
-#include "Bitmap.h"
+#include "../dib/cdib.h"
+#include <iostream>
 
 namespace imager {
 	using v8::Exception;
@@ -37,10 +38,10 @@ namespace imager {
 		else {
 			writePath = defaultWritePath;
 		}
-		BMP bmp;
-		bmp.readBmp(readPath);
-		bmp.grayScale();
-		bmp.saveBmp(writePath);
+		CDib cdib;
+		cdib.Load(readPath);
+		cdib.GrayScale();
+		cdib.Save(writePath);
 		args.GetReturnValue().Set(String::NewFromUtf8(isolate, "OK"));
 	}
 
@@ -50,5 +51,4 @@ namespace imager {
 	}
 
 	NODE_MODULE(grayScale, init);
-
 }

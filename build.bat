@@ -1,1 +1,0 @@
-g++ -o bmp.exe src/bmp.cpp -O2 -lgdi32 -static & pause

@@ -1,2 +1,4 @@
 addons/*/build
 src/*/build
+test/output/*
+.vscode

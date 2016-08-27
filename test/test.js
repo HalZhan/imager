@@ -1,7 +1,8 @@
 const imager = require('../src/imager');
 
-const readPath = 'snail.bmp';
-const writePath = 'gray.bmp';
+const readPath = '../resources/snail.bmp';
 
-//imager.grayScale(readPath);
-imager.captureScreen();
+// imager.binaryScale(readPath, './output/_binary_pic.bmp');
+// imager.grayScale(readPath);
+// imager.negative(readPath, './output/_negative_pic.bmp');
+imager.captureScreen('./output/captureScreen.bmp');

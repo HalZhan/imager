@@ -2,7 +2,7 @@
   "targets": [
     {
       "target_name": "imager",
-      "sources": [ "grayScale.cpp" ]
+      "sources": [ "grayScale.cpp", "../dib/cdib.cpp" ]
     }
   ]
 }
