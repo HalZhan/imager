@@ -1,6 +1,6 @@
 # imager
-One image processing tool.
-提供NodeJS图像处理方案
+One image processing tool for NodeJS.
+NodeJS图像处理工具
 
 # dependencies
 - node-gyp
@@ -12,10 +12,10 @@ One image processing tool.
 
 # api
 - Function:
-    - binaryScale([readPath], [savePath]) 二值化
-    - grayScale([readPath], [savePath]) 灰度化
-    - negative([readPath], [savePath]) 负片
-    - captureScreen([savePath]) 截屏
+    - binaryScale([readPath], [writePath]) 二值化
+    - grayScale([readPath], [writePath]) 灰度化
+    - negative([readPath], [writePath]) 负片
+    - captureScreen([writePath]) 截屏
 
 # 使用方法
 (test目录下)

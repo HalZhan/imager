@@ -3,9 +3,7 @@
 #define __CDIB_H__
 #include <Windows.h>
 #include <wingdi.h>
-
 #define BINARY_THRESHOLD 128 // 二值化灰度阈值
-
 class CDib
 {
 public:
@@ -13,7 +11,6 @@ public:
 	CDib();
 	// 析构函数
 	~CDib();
-
 	// 载入位图资源，传入文件路径名
 	BOOL Load(const char *);
 	// 存储位图资源，传入文件路径名
@@ -30,7 +27,6 @@ public:
 	void PrintFileHead();
 	// 打印信息头
 	void PrintInfoHead();
-	
 private:
 	// 实际图像像素数组指针
 	BYTE *m_pDibBytes;
