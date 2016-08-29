@@ -1,6 +1,6 @@
 # imager
-One image processing tool for NodeJS.
-NodeJS图像处理工具
+- One image processing tool for NodeJS.
+- NodeJS图像处理工具
 
 # dependencies
 - node-gyp
