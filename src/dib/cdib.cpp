@@ -158,6 +158,7 @@ BOOL CDib::Save(const char *filePath, BYTE *m_pDibBytes, LONG m_width, LONG m_he
 	FILE *fp = fopen(filePath, "wb");
 	if (!fp) {
 		cout << "Writing Image File Unsuccessfully!" << endl;
+		return FALSE;
 	}
 
 	// 申请位图文件头结构变量，填写文件头信息
